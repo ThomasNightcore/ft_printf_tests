@@ -6,13 +6,14 @@
 /*   By: tluegham <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:36:20 by tluegham          #+#    #+#             */
-/*   Updated: 2024/05/07 09:25:45 by tluegham         ###   ########.fr       */
+/*   Updated: 2024/05/07 10:40:26 by tluegham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <stddef.h>
+#include <limits.h>
 
 int	main(void)
 {
@@ -20,14 +21,16 @@ int	main(void)
 	// Int checks:
 	ft_printf("\n\tInt checks:\n\n");
 	//
-	printf("|len is: %d|\n", ft_printf("test hello: %d now %d %dafter\n", 1234, 12, 785609));
-	printf("|len is: %d|\n", printf("test hello: %d now %d %dafter\n", 1234, 12, 785609));
-	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", -2147483648));
-	printf("|len is: %d|\n", printf("test hello: %li now after\n", -2147483648));
-	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", 2147483647));
-	printf("|len is: %d|\n", printf("test hello: %i now after\n", 2147483647));
-	printf("|len is: %d|\n", ft_printf("test hello: %d now after\n", -2));
-	printf("|len is: %d|\n", printf("test hello: %d now after\n", -2));
+	printf("|len is: %d|\n", ft_printf("test hello: %d now %d %dafter\n", 1234, -12, 785609));
+	printf("|len is: %d|\n", printf("test hello: %d now %d %dafter\n", 1234, -12, 785609));
+	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", INT_MIN));
+	printf("|len is: %d|\n", printf("test hello: %i now after\n", INT_MIN));
+	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", (int)((long) INT_MIN - 1)));
+	printf("|len is: %d|\n", printf("test hello: %i now after\n", (int)((long) INT_MIN - 1)));
+	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", INT_MAX));
+	printf("|len is: %d|\n", printf("test hello: %i now after\n", INT_MAX));
+	printf("|len is: %d|\n", ft_printf("test hello: %i now after\n", (int)((long) INT_MAX + 1)));
+	printf("|len is: %d|\n", printf("test hello: %i now after\n", (int)((long) INT_MAX + 1)));
 	//
 	// Char checks:
 	ft_printf("\n\tChar checks:\n\n");

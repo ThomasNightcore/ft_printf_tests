@@ -1,7 +1,8 @@
 #!/bin/zsh
 
-CC=cc
+## Path to your header file
+includes_dir="./.."
 
-$CC -Werror -Wextra -Wall testcases.c ../libftprintf.a ../libft/libft.a -I../includes -o test.a
+cc -Werror -Wextra -Wall testcases.c ../libftprintf.a  -I$includes -o test.a
 ./test.a
 rm -f test.a
